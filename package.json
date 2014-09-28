@@ -1,0 +1,25 @@
+{
+  "name": "regex-format",
+  "version": "0.0.0",
+  "description": "Format regex with string substitutions",
+  "author": "Eugene Sharygin <eush77@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/eush77/regex-format",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eush77/regex-format"
+  },
+  "bugs": {
+    "url": "https://github.com/eush77/regex-format/issues"
+  },
+  "keywords": [
+    "format",
+    "regex",
+    "regexp",
+    "regular",
+    "expression",
+    "substitution"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
