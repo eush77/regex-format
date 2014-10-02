@@ -18,7 +18,7 @@ Wrapper around [string-format](https://www.npmjs.org/package/string-format).
     name: 'someone',
     email: 'someone@example.com'
   })
-/^Author:\s+someone <someone@example\.com>$/
+// /^Author:\s+someone <someone@example\.com>$/
 ```
 
 Or you can extend RegExp's prototype and it will also work:
@@ -29,7 +29,7 @@ Or you can extend RegExp's prototype and it will also work:
     name: 'someone',
     email: 'someone@example.com'
   })
-/^Author:\s+someone <someone@example\.com>$/
+// /^Author:\s+someone <someone@example\.com>$/
 ```
 
 ## API
