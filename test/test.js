@@ -23,6 +23,11 @@ describe('Basic', function () {
     format(/.+?/g).should.eql(/.+?/g);
     format(/{}/mig, 0).should.eql(/0/mig);
   });
+
+  it('should try to use the context as a spec', function () {
+    RegExp.prototype.format = format;
+    format(/{}{0}{}/, 1, 2).should.eql(/{}{0}{}/.format(1, 2));
+  });
 });
 
 

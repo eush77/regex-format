@@ -6,16 +6,23 @@ var stringFormat = require('string-format')
   , compose = require('lodash.compose');
 
 
-module.exports = function (regexp) {
-  if (!(regexp instanceof RegExp)) {
-    regexp = RegExp(regexp);
+module.exports = function (spec) {
+  var params = [].slice.call(arguments);
+
+  // If it is called in the context of RegExp, use it as a spec.
+  if (this instanceof RegExp) {
+    spec = this;
+  }
+  else {
+    spec = RegExp(spec);
+    params = params.slice(1);
   }
 
-  var source = regexp.source
-    , flags = regexp.toString().match('/([^/]*)$')[1];
+  var source = spec.source
+    , flags = spec.toString().match('/([^/]*)$')[1];
 
   // Escape substitutions.
-  var params = traverse([].slice.call(arguments, 1)).map(function (node) {
+  traverse(params).forEach(function (node) {
     if (this.isLeaf) {
       if (typeof node == 'function') {
         this.update(compose(escapeStringRegexp, String, node));

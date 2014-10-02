@@ -21,11 +21,24 @@ Wrapper around [string-format](https://www.npmjs.org/package/string-format).
 /^Author:\s+someone <someone@example\.com>$/
 ```
 
+Or you can extend RegExp's prototype and it will also work:
+
+```js
+> RegExp.prototype.format = regexFormat
+> /^Author:\s+{#name} <{#email}>$/.format({
+    name: 'someone',
+    email: 'someone@example.com'
+  })
+/^Author:\s+someone <someone@example\.com>$/
+```
+
 ## API
 
 ### regexFormat(spec, [values]...)
 
 `spec` is a RegExp, otherwise it is converted to RegExp. Flags are preserved.
+
+If `regexFormat` is called in the context of a RegExp, it will use it as a `spec` (see the example above).
 
 The syntax for substitutions is the same as accepted by [string-format](https://www.npmjs.org/package/string-format), except that non-empty groups are prepended with a hash sign: `{#0}`, `{#foo.bar}`, etc (empty groups are still `{}`).
 
