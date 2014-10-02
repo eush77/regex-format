@@ -1,10 +1,14 @@
 'use strict';
 
+var oldStringFormat = String.prototype.format;
+
 var stringFormat = require('string-format')
   , escapeStringRegexp = require('escape-string-regexp')
   , traverse = require('traverse')
   , compose = require('lodash.compose');
 
+// Workaround over string-format's prototype clogging.
+String.prototype.format = oldStringFormat;
 
 module.exports = function (spec) {
   var params = [].slice.call(arguments);
