@@ -1,6 +1,6 @@
 {
   "name": "regex-format",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Format regex with string substitutions. Auto-escape RegExp special characters",
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
@@ -17,10 +17,14 @@
   },
   "keywords": [
     "format",
+    "escape",
+    "string",
     "regex",
     "regexp",
+    "re",
     "regular",
     "expression",
+    "formatting",
     "substitution"
   ],
   "dependencies": {
