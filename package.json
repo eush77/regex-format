@@ -1,7 +1,7 @@
 {
   "name": "regex-format",
   "version": "0.0.0",
-  "description": "Format regex with string substitutions",
+  "description": "Format regex with string substitutions. Auto-escape RegExp special characters",
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
   "scripts": {
