@@ -1,5 +1,7 @@
 # regex-format [![Build Status][travis-badge]][travis] [![Dependency Status][david-badge]][david] [![DevDependency Status][david-dev-badge]][david-dev]
 
+[![npm](https://nodei.co/npm/regex-format.png)](https://nodei.co/npm/regex-format/)
+
 [travis-badge]: https://travis-ci.org/eush77/regex-format.svg
 [travis]: https://travis-ci.org/eush77/regex-format
 [david-badge]: https://david-dm.org/eush77/regex-format.png
@@ -41,6 +43,12 @@ Or you can extend RegExp's prototype and it will also work:
 If `regexFormat` is called in the context of a RegExp, it will use it as a `spec` (see the example above).
 
 The syntax for substitutions is the same as accepted by [string-format](https://www.npmjs.org/package/string-format), except that non-empty groups are prepended with a hash sign: `{#0}`, `{#foo.bar}`, etc (empty groups are still `{}`).
+
+## Install
+
+```shell
+npm install regex-format
+```
 
 ## License
 
