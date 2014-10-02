@@ -1,4 +1,11 @@
-# regex-format
+# regex-format [![Build Status][travis-badge]][travis] [![Dependency Status][david-badge]][david] [![DevDependency Status][david-dev-badge]][david-dev]
+
+[travis-badge]: https://travis-ci.org/eush77/regex-format.svg
+[travis]: https://travis-ci.org/eush77/regex-format
+[david-badge]: https://david-dm.org/eush77/regex-format.png
+[david]: https://david-dm.org/eush77/regex-format
+[david-dev-badge]: https://david-dm.org/eush77/regex-format/dev-status.png
+[david-dev]: https://david-dm.org/eush77/regex-format#info=devDependencies
 
 Format regex with string substitutions. Auto-escape RegExp special characters.
 
