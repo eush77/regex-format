@@ -24,7 +24,10 @@
     "substitution"
   ],
   "dependencies": {
-    "string-format": "^0.2.1"
+    "escape-string-regexp": "^1.0.2",
+    "lodash.compose": "^2.4.1",
+    "string-format": "^0.2.1",
+    "traverse": "^0.6.6"
   },
   "devDependencies": {
     "mocha": "^1.21.4",

@@ -1,6 +1,9 @@
 'use strict';
 
-var stringFormat = require('string-format');
+var stringFormat = require('string-format')
+  , escapeStringRegexp = require('escape-string-regexp')
+  , traverse = require('traverse')
+  , compose = require('lodash.compose');
 
 
 module.exports = function (regexp) {
@@ -9,8 +12,19 @@ module.exports = function (regexp) {
   }
 
   var source = regexp.source
-    , flags = regexp.toString().match('/([^/]*)$')[1]
-    , params = [].slice.call(arguments, 1);
+    , flags = regexp.toString().match('/([^/]*)$')[1];
+
+  // Escape substitutions.
+  var params = traverse([].slice.call(arguments, 1)).map(function (node) {
+    if (this.isLeaf) {
+      if (typeof node == 'function') {
+        this.update(compose(escapeStringRegexp, String, node));
+      }
+      else {
+        this.update(escapeStringRegexp(String(node)));
+      }
+    }
+  });
 
   // Whether a format group was matched ("{}" or "{#...}"),
   //   contrary to the ordinary RegExp syntax ("{1}", "{1,2}").

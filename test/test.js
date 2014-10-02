@@ -40,4 +40,13 @@ describe('Main functionality', function () {
       .should.eql(/red \{#2\} green \{\} \\\\{2} blue \\\{1\\\}/);
     format(/{#0.name} \{#0\} {#0.name}/, { name: 1 }).should.eql(/1 \{#0\} 1/);
   });
+
+  it('should escape RegExp special characters', function () {
+    format(/version {}/, '1.5.0').should.eql(/version 1\.5\.0/);
+    format(/2{}3 = {} = 8/, '**', '(2^3)').should.eql(/2\*\*3 = \(2\^3\) = 8/);
+    format(/{#foo}{#bar}/, {
+      foo: function () { return '.'; },
+      bar: function () { return '+'; }
+    }).should.eql(/\.\+/);
+  });
 });
