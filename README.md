@@ -14,7 +14,10 @@ Wrapper around [string-format](https://www.npmjs.org/package/string-format).
 ## Example
 
 ```js
-> regexFormat(/^Author:\s+{#name} <{#email}>$/, { name: 'someone', email: 'someone@example.com' })
+> regexFormat(/^Author:\s+{#name} <{#email}>$/, {
+    name: 'someone',
+    email: 'someone@example.com'
+  })
 /^Author:\s+someone <someone@example\.com>$/
 ```
 
