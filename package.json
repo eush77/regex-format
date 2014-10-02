@@ -4,6 +4,9 @@
   "description": "Format regex with string substitutions",
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "mocha --require should test"
+  },
   "homepage": "https://github.com/eush77/regex-format",
   "repository": {
     "type": "git",
@@ -20,6 +23,11 @@
     "expression",
     "substitution"
   ],
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "string-format": "^0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  }
 }
