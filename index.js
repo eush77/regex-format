@@ -7,8 +7,24 @@ var stringFormat = require('string-format')
   , traverse = require('traverse')
   , compose = require('lodash.compose');
 
-// Workaround over string-format's prototype clogging.
+
+// Workaround over string-format@0.2.1's quirks.
+stringFormat = (function (format) {
+  return function (spec) {
+    String.prototype.format = format;
+
+    var params = [].slice.call(arguments, 1);
+    if (!params.length) {
+      params.push(null);
+    }
+
+    var formatted = format.apply(spec, params);
+    String.prototype.format = oldStringFormat;
+    return formatted;
+  };
+}(String.prototype.format));
 String.prototype.format = oldStringFormat;
+
 
 module.exports = function (spec) {
   var params = [].slice.call(arguments);
