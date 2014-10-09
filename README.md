@@ -34,10 +34,18 @@ Or you can extend RegExp's prototype and it will also work:
 // /^Author:\s+someone <someone@example\.com>$/
 ```
 
-`regex-format` is also a nicer way to construct RegExps from strings.
+Alternatively, you can `extendRegExp`:
 
 ```js
-RegExp.prototype.format = regexFormat;
+> require('regex-format').extendRegExp()
+> typeof /./.format
+'function'
+```
+
+`regex-format` is also just a nicer way to construct RegExps from strings.
+
+```js
+require('regex-format').extendRegExp();
 
 var regexp = /^{}$/.format(str);
 ```
@@ -53,6 +61,12 @@ This is equivalent to `RegExp('^' + escapeStringRegexp(str) + '$')`.
 If `regexFormat` is called in the context of a RegExp, it will use it as a `spec` (see the examples above).
 
 The syntax for substitutions is the same as accepted by [string-format](https://www.npmjs.org/package/string-format), except that non-empty groups are prepended with a hash sign: `{#0}`, `{#foo.bar}`, etc (empty groups are still `{}`).
+
+### regexFormat.extendRegExp()
+
+Equivalent to `RegExp.prototype.format = regexFormat`.
+
+Returns `regexFormat`.
 
 ## Install
 

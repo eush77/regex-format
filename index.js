@@ -26,7 +26,7 @@ stringFormat = (function (format) {
 String.prototype.format = oldStringFormat;
 
 
-module.exports = function (spec) {
+var regexFormat = function (spec) {
   var params = [].slice.call(arguments);
 
   // If it is called in the context of RegExp, use it as a spec.
@@ -74,3 +74,11 @@ module.exports = function (spec) {
   source = stringFormat.apply(null, [source].concat(params));
   return RegExp(source, flags);
 };
+
+
+regexFormat.extendRegExp = function () {
+  return RegExp.prototype.format = this;
+};
+
+
+module.exports = regexFormat;
