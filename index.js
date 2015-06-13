@@ -77,7 +77,12 @@ var regexFormat = function (spec) {
 
 
 regexFormat.extendRegExp = function () {
-  return RegExp.prototype.format = this;
+  Object.defineProperty(RegExp.prototype, 'format', {
+    value: this,
+    configurable: true,
+    writable: true
+  });
+  return this;
 };
 
 
