@@ -27,16 +27,8 @@ String.prototype.format = oldStringFormat;
 
 
 var regexFormat = function (spec) {
-  var params = [].slice.call(arguments);
-
-  // If it is called in the context of RegExp, use it as a spec.
-  if (this instanceof RegExp) {
-    spec = this;
-  }
-  else {
-    spec = RegExp(spec);
-    params = params.slice(1);
-  }
+  spec = RegExp(spec);
+  var params = [].slice.call(arguments, 1);
 
   var source = spec.source
     , flags = spec.toString().match('/([^/]*)$')[1];
@@ -73,16 +65,6 @@ var regexFormat = function (spec) {
 
   source = stringFormat.apply(null, [source].concat(params));
   return RegExp(source, flags);
-};
-
-
-regexFormat.extendRegExp = function () {
-  Object.defineProperty(RegExp.prototype, 'format', {
-    value: this,
-    configurable: true,
-    writable: true
-  });
-  return this;
 };
 
 

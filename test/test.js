@@ -23,19 +23,6 @@ describe('Basic', function () {
     format(/.+?/g).should.eql(/.+?/g);
     format(/{}/mig, 0).should.eql(/0/mig);
   });
-
-  it('should try to use the context as a spec', function () {
-    RegExp.prototype.format = format;
-    format(/{}{0}{}/, 1, 2).should.eql(/{}{0}{}/.format(1, 2));
-    delete RegExp.prototype.format;
-  });
-
-  it('should not make prototype extension method enumerable', function () {
-    format.extendRegExp();
-    RegExp.prototype.format.should.equal(format);
-    Object.keys(RegExp.prototype).indexOf('format').should.equal(-1);
-    delete RegExp.prototype.format;
-  });
 });
 
 
