@@ -63,7 +63,7 @@ var regexFormat = function (spec) {
     }
   });
 
-  source = stringFormat.apply(null, [source].concat(params));
+  source = stringFormat.apply(null, [source].concat(escapedParams));
   return RegExp(source, flags);
 };
 
