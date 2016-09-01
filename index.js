@@ -34,7 +34,7 @@ var regexFormat = function (spec) {
       flags = spec.toString().match('/([^/]*)$')[1];
 
   // Escape substitutions.
-  traverse(params).forEach(function (node) {
+  var escapedParams = traverse(params).map(function (node) {
     if (this.isLeaf) {
       if (typeof node == 'function') {
         this.update(compose(escapeStringRegexp, String, node));
