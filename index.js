@@ -5,7 +5,7 @@ var oldStringFormat = String.prototype.format;
 var stringFormat = require('string-format'),
     escapeStringRegexp = require('escape-string-regexp'),
     traverse = require('traverse'),
-    compose = require('lodash.compose');
+    flowright = require('lodash.flowright');
 
 
 // Workaround over string-format@0.2.1's quirks.
@@ -37,7 +37,7 @@ var regexFormat = function (spec) {
   var escapedParams = traverse(params).map(function (node) {
     if (this.isLeaf) {
       if (typeof node == 'function') {
-        this.update(compose(escapeStringRegexp, String, node));
+        this.update(flowright(escapeStringRegexp, String, node));
       }
       else {
         this.update(escapeStringRegexp(String(node)));
