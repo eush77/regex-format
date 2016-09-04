@@ -49,4 +49,10 @@ describe('Main functionality', function () {
       bar: function () { return '+'; }
     }).should.eql(/\.\+/);
   });
+
+  it('should not manipulate the original parameters', function () {
+    var params = {foo: '['};
+    format(/{#foo}/, params);
+    params.foo.should.eql('[')
+  });
 });
