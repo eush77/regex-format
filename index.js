@@ -2,10 +2,10 @@
 
 var oldStringFormat = String.prototype.format;
 
-var stringFormat = require('string-format')
-  , escapeStringRegexp = require('escape-string-regexp')
-  , traverse = require('traverse')
-  , compose = require('lodash.compose');
+var stringFormat = require('string-format'),
+    escapeStringRegexp = require('escape-string-regexp'),
+    traverse = require('traverse'),
+    flowright = require('lodash.flowright');
 
 
 // Workaround over string-format@0.2.1's quirks.
@@ -30,14 +30,14 @@ var regexFormat = function (spec) {
   spec = RegExp(spec);
   var params = [].slice.call(arguments, 1);
 
-  var source = spec.source
-    , flags = spec.toString().match('/([^/]*)$')[1];
+  var source = spec.source,
+      flags = spec.toString().match('/([^/]*)$')[1];
 
   // Escape substitutions.
-  traverse(params).forEach(function (node) {
+  var escapedParams = traverse(params).map(function (node) {
     if (this.isLeaf) {
       if (typeof node == 'function') {
-        this.update(compose(escapeStringRegexp, String, node));
+        this.update(flowright(escapeStringRegexp, String, node));
       }
       else {
         this.update(escapeStringRegexp(String(node)));
@@ -63,7 +63,7 @@ var regexFormat = function (spec) {
     }
   });
 
-  source = stringFormat.apply(null, [source].concat(params));
+  source = stringFormat.apply(null, [source].concat(escapedParams));
   return RegExp(source, flags);
 };
 

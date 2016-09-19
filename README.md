@@ -7,7 +7,7 @@
 [david-badge]: https://david-dm.org/eush77/regex-format.png
 [david]: https://david-dm.org/eush77/regex-format
 [david-dev-badge]: https://david-dm.org/eush77/regex-format/dev-status.png
-[david-dev]: https://david-dm.org/eush77/regex-format#info=devDependencies
+[david-dev]: https://david-dm.org/eush77/regex-format?type=dev
 
 Format regex with string substitutions.
 
