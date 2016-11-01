@@ -1,6 +1,6 @@
 {
   "name": "regex-format",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Format regex with string substitutions",
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
