@@ -1,29 +1,9 @@
 'use strict';
 
-var oldStringFormat = String.prototype.format;
-
 var stringFormat = require('string-format'),
     escapeStringRegexp = require('escape-string-regexp'),
     traverse = require('traverse'),
     flowright = require('lodash.flowright');
-
-
-// Workaround over string-format@0.2.1's quirks.
-stringFormat = (function (format) {
-  return function (spec) {
-    String.prototype.format = format;
-
-    var params = [].slice.call(arguments, 1);
-    if (!params.length) {
-      params.push(null);
-    }
-
-    var formatted = format.apply(spec, params);
-    String.prototype.format = oldStringFormat;
-    return formatted;
-  };
-}(String.prototype.format));
-String.prototype.format = oldStringFormat;
 
 
 var regexFormat = function (spec) {
